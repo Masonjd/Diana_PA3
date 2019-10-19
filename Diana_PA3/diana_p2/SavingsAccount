@@ -1,0 +1,54 @@
+
+
+public class SavingsAccount
+{
+    static double annualInterestRate = 0.04;
+
+    private double  savingsBalance;
+    public static void main(String[] args)
+    {
+        int i;
+        SavingsAccount saver1 = new SavingsAccount(2000.00);
+        SavingsAccount saver2 = new SavingsAccount(3000.00);
+
+        System.out.println("Month        Saver1        Saver2");
+        for(i = 0; i < 12; i++)
+         {
+            saver1.calculateMonthlyInterest();
+            saver2.calculateMonthlyInterest();
+
+            System.out.print("Month: " + i + "     " );
+            saver1.printBal();
+            System.out.print("     ");
+            saver2.printBal();
+            System.out.println("");
+         }
+
+         annualInterestRate = .05;
+         saver1.calculateMonthlyInterest();
+         saver2.calculateMonthlyInterest();
+         i++;
+         System.out.print("Month: " + i + "     " );
+         saver1.printBal();
+         System.out.print("     ");
+         saver2.printBal();
+         System.out.println("");
+    }
+
+    public void calculateMonthlyInterest()
+    {
+        double calc = this.savingsBalance * annualInterestRate / 12;
+        this.savingsBalance += calc;
+    }
+
+    public SavingsAccount(double save)
+    {
+        this.savingsBalance = save;
+    }
+
+    public void printBal()
+    {
+        System.out.printf("%f", this.savingsBalance);
+    }
+
+}
